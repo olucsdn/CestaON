@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="pwa-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="pwa-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="url(#pwa-bg-grad)" />
+  <g transform="translate(36, 36)" filter="url(#pwa-shadow)" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M15 15h90l-10 65H25z" fill="#ffffff" fill-opacity="0.15" />
+    <path d="M40 30V15a20 20 0 0 1 40 0v15" />
+    <circle cx="45" cy="100" r="5" fill="#ffffff" />
+    <circle cx="75" cy="100" r="5" fill="#ffffff" />
+    <path d="M50 50l8 8 16-16" stroke="#34d399" stroke-width="7" fill="none" />
+  </g>
+</svg>

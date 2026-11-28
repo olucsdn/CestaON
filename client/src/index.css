@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color-scheme: light dark;
+}
+
+/* Fixação estrita do viewport no mobile — impede arraste lateral da página */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: auto;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  touch-action: pan-y pinch-zoom;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Isolamento de rolagem horizontal interna (chips de setor e favoritos) */
+.overflow-x-auto {
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  touch-action: pan-x;
+}
+
+/* Ocultação de barra de rolagem visual mantendo funcionalidade de toque/scroll */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Estilização suave de seleção de texto para harmonia com teoria das cores */
+::selection {
+  background-color: rgba(16, 185, 129, 0.25);
+  color: #064e3b;
+}
+.dark ::selection {
+  background-color: rgba(16, 185, 129, 0.35);
+  color: #a7f3d0;
+}
+
+/* Prevenção de seleção acidental durante toques repetidos no mobile */
+.tap-highlight-none {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Área de toque mínima de 48px para ergonomia mobile */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Altura ergonômica e Safe Area para o Cabeçalho Mobile (espaçamento vertical ampliado) */
+.cestaon-header {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 22px);
+  padding-bottom: 20px;
+  min-height: calc(env(safe-area-inset-top, 0px) + 86px);
+}
+@media (min-width: 640px) {
+  .cestaon-header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    min-height: 76px;
+  }
+}
+
+/* Scrollbar suave adaptada para temas claro e escuro */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Oculta o botão nativo de revelação/limpeza de senha dos navegadores (Edge / Chromium / IE) */
+/* evitando a duplicação visual com os botões personalizados da aplicação */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* ========================================================= */
+/* EFEITOS DE SUCULÊNCIA (JUICE) & FEEDBACK VISUAL DINÂMICO   */
+/* ========================================================= */
+
+@keyframes screenShake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  15% { transform: translateX(-6px) rotate(-1.5deg); }
+  30% { transform: translateX(6px) rotate(1.5deg); }
+  45% { transform: translateX(-5px) rotate(-1deg); }
+  60% { transform: translateX(4px) rotate(1deg); }
+  75% { transform: translateX(-2px) rotate(-0.5deg); }
+  90% { transform: translateX(1px); }
+}
+
+.animate-screen-shake {
+  animation: screenShake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes juicePop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.18); }
+  70% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+.animate-juice-pop {
+  animation: juicePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes floatParticle {
+  0% { opacity: 1; transform: translateY(0) scale(0.85); }
+  50% { opacity: 1; transform: translateY(-22px) scale(1.15); }
+  100% { opacity: 0; transform: translateY(-44px) scale(0.9); }
+}
+
+.animate-float-particle {
+  animation: floatParticle 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes wobbleBoom {
+  0% { opacity: 0; transform: translateY(-8px) scale(0.96); }
+  40% { opacity: 1; transform: translateY(0) scale(1.025) rotate(-1.5deg); }
+  70% { transform: scale(0.99) rotate(0.8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.animate-wobble-boom {
+  animation: wobbleBoom 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes flyingMoney {
+  0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 1; }
+  60% { opacity: 1; }
+  100% { transform: translateY(-75px) scale(1.2) rotate(25deg); opacity: 0; }
+}
+
+.animate-flying-money {
+  animation: flyingMoney 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-10px) rotate(0deg) scale(0.85); opacity: 0; }
+  15% { opacity: 0.9; }
+  100% { transform: translateY(95px) rotate(140deg) scale(1); opacity: 0; }
+}
+
+.animate-confetti-fall {
+  animation: confettiFall 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes shimmerGlow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer-glow {
+  background-size: 200% 100%;
+  animation: shimmerGlow 2.5s linear infinite;
+}
+
+/* Micro-efeito de celebração sutil ao concluir o último item da lista */
+@keyframes microCelebration {
+  0% { transform: translateY(0) scale(0.7) rotate(0deg); opacity: 1; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-34px) scale(1.1) rotate(15deg); opacity: 0; }
+}
+
+.animate-micro-celebration {
+  animation: microCelebration 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Feedback tátil suave para botões interativos (tactile press sem exagero: 3% de escala) */
+.btn-tactile {
+  transition: transform 120ms cubic-bezier(0.2, 0, 0, 1), background-color 150ms ease, border-color 150ms ease;
+  user-select: none;
+}
+.btn-tactile:active {
+  transform: scale(0.97);
+}
+
+/* Skeleton Screen com efeito shimmer suave adaptado para temas claro e escuro */
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 25%,
+    #f1f5f9 50%,
+    #e2e8f0 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.6s ease-in-out infinite;
+}
+
+.dark .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #1e293b 25%,
+    #334155 50%,
+    #1e293b 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer,
+  .dark .skeleton-shimmer {
+    animation: none;
+  }
+}
+
+
+

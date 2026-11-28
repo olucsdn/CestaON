@@ -1,0 +1,21 @@
+services:
+  cestaon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cestaon-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - DB_PATH=/app/data/feira.db
+      - CORS_ORIGIN=https://cestaon.onrender.com,http://localhost:3000
+      - TRUST_PROXY=true
+    volumes:
+      - cestaon-data:/app/data
+
+volumes:
+  cestaon-data:
+    driver: local

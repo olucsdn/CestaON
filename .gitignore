@@ -1,0 +1,36 @@
+# Dependências
+node_modules/
+client/node_modules/
+
+# Builds e temporários
+client/dist/
+.vite-temp/
+dist/
+
+# SQLite local, bancos de dados e locks temporários
+data/*.db
+data/*.db-shm
+data/*.db-wal
+*.db
+
+# Documentação interna, auditorias de segurança e especificações de prompts
+RELATORIO_SEGURANCA.md
+RELATORIO_AUDITORIA_SEGURANCA_AVANCADA.md
+prompt-feira.md
+
+# Logs e variáveis de ambiente
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.local
+.env.*.local
+
+# SO e IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+Relatorio_Auditoria_e_Correcoes_CestaON.pdf
+generate_pdf_report.py
